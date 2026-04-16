@@ -8,8 +8,7 @@ namespace SistemaParqueo
     {
         private const int rows = 5; // Number of rows in the grid
         private const int cols = 10; // Number of columns in the grid
-        private Button entryButton;
-        private Button exitButton;
+        
         private Timer timer;
 
         public Form1()
@@ -18,15 +17,14 @@ namespace SistemaParqueo
 
             this.Text = "Parking System";
             this.Size = new Size(800, 600);
-            this.MouseClick += new MouseEventHandler(this.Form1_MouseClick);
 
-            entryButton = new Button() { Text = "Entry", Location = new Point(10, 10) };
-            exitButton = new Button() { Text = "Exit", Location = new Point(100, 10) };
-            entryButton.Click += EntryButton_Click;
-            exitButton.Click += ExitButton_Click;
+            // Wire up events to designer-created controls
+            this.entryButton.Click += EntryButton_Click;
+            this.exitButton.Click += ExitButton_Click;
 
-            this.Controls.Add(entryButton);
-            this.Controls.Add(exitButton);
+            // Draw inside the parking panel and handle its mouse clicks
+            this.parkingPanel.Paint += ParkingPanel_Paint;
+            this.parkingPanel.MouseClick += new MouseEventHandler(this.Form1_MouseClick);
 
             timer = new Timer();
             timer.Interval = 1000; // Update every second
@@ -34,12 +32,7 @@ namespace SistemaParqueo
             timer.Start();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            Graphics g = e.Graphics;
-            DrawGrid(g);
-        }
+        // Drawing moved to the parking panel to match designer layout
 
         private void DrawGrid(Graphics g)
         {
@@ -62,6 +55,11 @@ namespace SistemaParqueo
             {
                 Console.WriteLine($"Space selected: Row {rowIndex}, Column {colIndex}");
             }
+        }
+
+        private void ParkingPanel_Paint(object sender, PaintEventArgs e)
+        {
+            DrawGrid(e.Graphics);
         }
 
         private void EntryButton_Click(object sender, EventArgs e)
