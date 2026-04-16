@@ -12,7 +12,7 @@ namespace SistemaParqueo
     public class Form1 : Form
     {
         private int filas = 5;
-        private int columnas = 2;
+        private int columnas = 4;
         private Rectangle[,] espaciosRect;
         private bool[,] ocupado;
         private string[,] placas;
@@ -179,6 +179,7 @@ namespace SistemaParqueo
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = Color.WhiteSmoke;
             this.MaximizeBox = false;
+            this.Visible = true;
 
             // Agregar controles
             this.Controls.Add(this.lblTitulo);
