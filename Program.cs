@@ -4,6 +4,11 @@ using System.Windows.Forms;
 
 namespace SistemaParqueo
 {
+    /// <summary>
+    /// INTEGRANTE 4: DESARROLLADOR UI (FRONTEND) - EVANEYH
+    /// Responsabilidad: Interfaz gráfica en Windows Forms
+    /// Tareas: Diseño del Dashboard principal e implementación de la cuadrícula visual con GDI+
+    /// </summary>
     public class Form1 : Form
     {
         // Variables globales del sistema de parqueo
