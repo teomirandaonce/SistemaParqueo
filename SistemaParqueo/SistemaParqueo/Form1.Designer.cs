@@ -63,5 +63,13 @@ namespace SistemaParqueo
             this.parkingPanel.Controls.Add(this.entryButton);
             this.parkingPanel.Controls.Add(this.exitButton);
         }
+
+        private System.Windows.Forms.Panel parkingPanel;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.TextBox placaTextBox;
+        private System.Windows.Forms.NumericUpDown plazasNumericUpDown;
+        private System.Windows.Forms.Button entryButton;
+        private System.Windows.Forms.Button exitButton;
     }
 }
