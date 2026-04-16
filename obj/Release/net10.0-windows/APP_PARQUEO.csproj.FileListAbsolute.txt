@@ -1,0 +1,14 @@
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\bin\Release\net10.0-windows\APP_PARQUEO.exe
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\bin\Release\net10.0-windows\APP_PARQUEO.deps.json
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\bin\Release\net10.0-windows\APP_PARQUEO.runtimeconfig.json
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\bin\Release\net10.0-windows\APP_PARQUEO.dll
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\bin\Release\net10.0-windows\APP_PARQUEO.pdb
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Release\net10.0-windows\APP_PARQUEO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Release\net10.0-windows\APP_PARQUEO.AssemblyInfoInputs.cache
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Release\net10.0-windows\APP_PARQUEO.AssemblyInfo.cs
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Release\net10.0-windows\APP_PARQUEO.csproj.CoreCompileInputs.cache
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Release\net10.0-windows\APP_PARQUEO.dll
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Release\net10.0-windows\refint\APP_PARQUEO.dll
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Release\net10.0-windows\APP_PARQUEO.pdb
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Release\net10.0-windows\APP_PARQUEO.genruntimeconfig.cache
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Release\net10.0-windows\ref\APP_PARQUEO.dll

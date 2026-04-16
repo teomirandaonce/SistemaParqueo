@@ -1,0 +1,4 @@
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Debug\net10.0\APP_PARQUEO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Debug\net10.0\APP_PARQUEO.AssemblyInfoInputs.cache
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Debug\net10.0\APP_PARQUEO.AssemblyInfo.cs
+C:\Users\EvanelyLeavinHuezoOr\Desktop\PED\APP_PARQUEO\APP_PARQUEO\obj\Debug\net10.0\APP_PARQUEO.csproj.CoreCompileInputs.cache
