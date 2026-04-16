@@ -11,9 +11,8 @@ namespace SistemaParqueo
     /// </summary>
     public class Form1 : Form
     {
-        // Variables globales del sistema de parqueo
         private int filas = 5;
-        private int columnas = 5;
+        private int columnas = 2;
         private Rectangle[,] espaciosRect;
         private bool[,] ocupado;
         private string[,] placas;
@@ -90,7 +89,7 @@ namespace SistemaParqueo
             // PANEL DE PARQUEO (Cuadrícula GDI+)
             this.parkingPanel = new Panel();
             this.parkingPanel.Location = new Point(150, 55);
-            this.parkingPanel.Size = new Size(400, 400);
+            this.parkingPanel.Size = new Size(200, 400);
             this.parkingPanel.BackColor = Color.White;
             this.parkingPanel.BorderStyle = BorderStyle.FixedSingle;
             this.parkingPanel.Paint += parkingPanel_Paint;
