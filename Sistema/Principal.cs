@@ -1,8 +1,9 @@
-#nullable disable // <- Con esto le decimos a .NET 10 que apague las advertencias de nulos en este archivo
+// Diseñado y Modificado por Evanelyh
+#nullable disable
 using Microsoft.Data.Sqlite;
 using Sistema;
 using System;
-using System.Drawing; // Asegúrate de tener esta directiva para Size y Color
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Sistema
@@ -98,7 +99,7 @@ namespace Sistema
                                 // 3. Configurar color
                                 if (estado.Trim().ToLower() == "disponible")
                                 {
-                                    btnEspacio.BackColor = Color.LightGreen;
+                                    btnEspacio.BackColor = Color.CadetBlue;
                                 }
                                 else
                                 {
@@ -295,6 +296,16 @@ namespace Sistema
 
                 // Volvemos a generar el mapa en tiempo real leyendo la base de datos limpia
                 CargarMapaParqueo();
+            }
+        }
+
+        // Diseñado por Evanelyh: Dibuja la calle divisoria entre carros y motos
+        private void panelCalle_Paint(object sender, PaintEventArgs e)
+        {
+            using (Pen pen = new Pen(Color.Yellow, 3))
+            {
+                pen.DashPattern = new float[] { 5, 5 };
+                e.Graphics.DrawLine(pen, panelCalle.Width / 2, 0, panelCalle.Width / 2, panelCalle.Height);
             }
         }
     }

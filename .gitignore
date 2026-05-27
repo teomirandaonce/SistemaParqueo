@@ -1,0 +1,15 @@
+# Ignorar archivos locales de documentación y lanzadores solicitados por el usuario
+Manual_Usuario_SistemaParqueo.html
+Script_BaseDatos.sql
+IniciarSistema.bat
+ProyectoFase1PED.docx
+
+# Ignorar archivos del compilador e IDE de C#
+.vs/
+[Bb]in/
+[Oo]bj/
+*.log
+*.user
+*.suo
+*.userosscache
+*.sln.docstates

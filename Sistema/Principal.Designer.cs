@@ -1,4 +1,4 @@
-﻿namespace Sistema
+namespace Sistema
 {
     partial class Principal
     {
@@ -39,6 +39,7 @@
             btnConfiguracion = new Button();
             panelParqueo1 = new FlowLayoutPanel();
             panelParqueo2 = new FlowLayoutPanel();
+            panelCalle = new Panel();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
@@ -138,7 +139,7 @@
             // panelParqueo1
             // 
             panelParqueo1.AutoScroll = true;
-            panelParqueo1.Location = new Point(33, 53);
+            panelParqueo1.Location = new Point(25, 53);
             panelParqueo1.Name = "panelParqueo1";
             panelParqueo1.Size = new Size(178, 352);
             panelParqueo1.TabIndex = 3;
@@ -146,15 +147,24 @@
             // panelParqueo2
             // 
             panelParqueo2.AutoScroll = true;
-            panelParqueo2.Location = new Point(255, 53);
+            panelParqueo2.Location = new Point(285, 53);
             panelParqueo2.Name = "panelParqueo2";
             panelParqueo2.Size = new Size(178, 352);
             panelParqueo2.TabIndex = 4;
             // 
+            // panelCalle
+            // 
+            panelCalle.BackColor = Color.FromArgb(45, 45, 45);
+            panelCalle.Location = new Point(215, 53);
+            panelCalle.Name = "panelCalle";
+            panelCalle.Size = new Size(60, 352);
+            panelCalle.TabIndex = 9;
+            panelCalle.Paint += panelCalle_Paint;
+            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(83, 35);
+            label4.Location = new Point(70, 35);
             label4.Name = "label4";
             label4.Size = new Size(88, 15);
             label4.TabIndex = 5;
@@ -163,7 +173,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(299, 35);
+            label5.Location = new Point(330, 35);
             label5.Name = "label5";
             label5.Size = new Size(88, 15);
             label5.TabIndex = 6;
@@ -200,6 +210,7 @@
             Controls.Add(btnConfiguracion);
             Controls.Add(label4);
             Controls.Add(panelParqueo2);
+            Controls.Add(panelCalle);
             Controls.Add(panelParqueo1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -225,6 +236,7 @@
         private Label label3;
         private FlowLayoutPanel panelParqueo1;
         private FlowLayoutPanel panelParqueo2;
+        private Panel panelCalle;
         private Label label4;
         private Label label5;
         private Label label6;
