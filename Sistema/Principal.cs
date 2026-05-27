@@ -10,7 +10,6 @@ namespace Sistema
 {
     public partial class Principal : Form
     {
-        // Declaramos esta variable aquí arriba para usarla en cualquier botón
         private string idEspacioSeleccionado = "";
 
         public Principal()
@@ -20,27 +19,22 @@ namespace Sistema
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            // Forzamos a que el combo box no permita escritura manual desde el arranque
             cmbTipoVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
 
             CargarMapaParqueo();
 
-            //Instanciamos nuestra clase de conexión
             Connection db = new Connection();
 
-            //Intentamos conectar con la base de datos
             using (SqliteConnection connection = db.ObtenerConexion())
             {
                 try
                 {
                     connection.Open();
 
-                    // Consulta real basada en tu tabla 'Espacios' y columna 'estado'
                     string query = "SELECT COUNT(*) FROM Espacios WHERE estado = 'Disponible';";
 
                     using (SqliteCommand command = new SqliteCommand(query, connection))
                     {
-                        // ExecuteScalar devuelve un long en Microsoft.Data.Sqlite
                         long disponibles = (long)command.ExecuteScalar();
 
                         MessageBox.Show($"¡Conexión exitosa al sistema de parqueo desde cero!\n\nEspacios disponibles actualmente: {disponibles}",
@@ -61,7 +55,6 @@ namespace Sistema
 
         private void CargarMapaParqueo()
         {
-            // 1. Limpieza absoluta de los paneles
             panelParqueo1.Controls.Clear();
             panelParqueo2.Controls.Clear();
 
@@ -82,13 +75,11 @@ namespace Sistema
                         {
                             while (reader.Read())
                             {
-                                // Lectura directa y segura gracias al #nullable disable
                                 string idEspacio = reader["id_espacio"].ToString();
                                 string numero = reader["numero"].ToString();
                                 string estado = reader["estado"].ToString();
                                 string seccion = reader["seccion"].ToString();
 
-                                // 2. Crear el botón físico
                                 Button btnEspacio = new Button();
                                 btnEspacio.Text = $"Espacio {numero}\n[{estado}]";
                                 btnEspacio.Size = new Size(100, 70);
@@ -96,7 +87,6 @@ namespace Sistema
                                 btnEspacio.Margin = new Padding(10);
                                 btnEspacio.Tag = idEspacio;
 
-                                // 3. Configurar color
                                 if (estado.Trim().ToLower() == "disponible")
                                 {
                                     btnEspacio.BackColor = Color.CadetBlue;
@@ -106,10 +96,8 @@ namespace Sistema
                                     btnEspacio.BackColor = Color.Salmon;
                                 }
 
-                                // 4. Enlazar el evento de clic
                                 btnEspacio.Click += BotonEspacio_Click;
 
-                                // 5. Filtrado flexible de secciones para evitar fallos de mayúsculas o espacios
                                 string seccionLimpia = seccion.Trim().ToLower();
 
                                 if (seccionLimpia.Contains("1"))
@@ -126,7 +114,6 @@ namespace Sistema
                         }
                     }
 
-                    // Mensaje de diagnóstico por si la tabla no tiene datos todavía
                     if (contadorBotones == 0)
                     {
                         MessageBox.Show("La conexión fue exitosa, pero la tabla 'Espacios' está vacía o las secciones no contienen los números '1' o '2'.",
@@ -148,15 +135,12 @@ namespace Sistema
             {
                 idEspacioSeleccionado = botonPresionado.Tag.ToString();
 
-                // Extraemos las líneas del texto del botón (Línea 0: Nombre, Línea 1: [Estado])
                 string[] lineas = botonPresionado.Text.Split('\n');
                 string nombreEspacio = lineas[0];
                 string estadoEspacio = lineas.Length > 1 ? lineas[1] : "";
 
-                // Actualizamos el Label mostrando claramente si está libre u ocupado
                 lblSeleccionado.Text = $"Seleccionado: {nombreEspacio} {estadoEspacio} (ID: {idEspacioSeleccionado})";
 
-                // Preselección para parqueo de motos o carros automáticamente
                 if (panelParqueo2.Controls.Contains(botonPresionado))
                 {
                     cmbTipoVehiculo.SelectedItem = "Moto";
@@ -170,14 +154,11 @@ namespace Sistema
 
         private void btnCobrar_Click(object sender, EventArgs e)
         {
-            // 1. Invocamos la validación de tu clase externa pasándole las variables de la interfaz
             if (!Validaciones.EsEspacioAptoParaCobrar(idEspacioSeleccionado, lblSeleccionado.Text))
             {
-                // Si la clase determina que no es apto, se detiene el flujo aquí mismo
                 return;
             }
 
-            // 2. Si la validación devuelve true, procedemos a abrir la ventana de pago con seguridad
             int idEspacio = Convert.ToInt32(idEspacioSeleccionado);
 
             FormPago ventanaPago = new FormPago(idEspacio);
@@ -185,19 +166,17 @@ namespace Sistema
 
             if (ventanaPago.ShowDialog() == DialogResult.OK)
             {
-                // Limpieza y actualización del mapa dinámico si el pago fue exitoso
                 idEspacioSeleccionado = "";
                 lblSeleccionado.Text = "Ningún espacio seleccionado";
                 txtPlaca.Clear();
                 cmbTipoVehiculo.SelectedIndex = -1;
 
-                CargarMapaParqueo(); // Redibuja los botones a verde en vivo
+                CargarMapaParqueo();
             }
         }
 
         private void btnAsignarParqueo_Click(object sender, EventArgs e)
         {
-            // --- NUEVAS VALIDACIONES OPTIMIZADAS DESDE LA CLASE ESTÁTICA ---
             if (!Validaciones.ValidarSeleccion(idEspacioSeleccionado)) return;
             if (!Validaciones.ValidarEspacioOcupado(lblSeleccionado.Text)) return;
             if (!Validaciones.ValidarTipoVehiculo(cmbTipoVehiculo.SelectedIndex)) return;
@@ -206,7 +185,6 @@ namespace Sistema
             string placa = txtPlaca.Text.Trim().ToUpper();
             string tipoVehiculo = cmbTipoVehiculo.SelectedItem.ToString();
 
-            // Escudo de exclusividad para el panel del Parqueo 2 (Motos)
             Button botonSeleccionado = null;
             foreach (Button btn in panelParqueo2.Controls)
             {
@@ -224,7 +202,6 @@ namespace Sistema
                 return;
             }
 
-            // Conexión y operaciones directas
             Connection db = new Connection();
 
             using (SqliteConnection connection = db.ObtenerConexion())
@@ -233,10 +210,8 @@ namespace Sistema
                 {
                     connection.Open();
 
-                    // VALIDACIÓN DE PLACA OPTIMIZADA DESDE LA CLASE
                     if (!Validaciones.ValidarPlacaDuplicada(placa, connection)) return;
 
-                    // Procesamos la transacción física si pasó todos los filtros anteriores
                     using (SqliteTransaction transaccion = connection.BeginTransaction())
                     {
                         string queryVehiculo = @"INSERT INTO Vehiculos (placa, tipo, hora_entrada, espacio_id) 
@@ -265,7 +240,6 @@ namespace Sistema
                         MessageBox.Show($"¡Ingreso Exitoso!\n\nVehículo registrado en la tabla Vehículos y espacio modificado a Ocupado.",
                                         "Sistema de Parqueo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Limpieza de controles
                         txtPlaca.Clear();
                         cmbTipoVehiculo.SelectedIndex = -1;
                         idEspacioSeleccionado = "";
@@ -287,19 +261,15 @@ namespace Sistema
             FormConfiguracion frmConfig = new FormConfiguracion();
             frmConfig.StartPosition = FormStartPosition.CenterParent;
 
-            // Si la ventana devuelve DialogResult.OK significa que se hizo un reset completo
             if (frmConfig.ShowDialog() == DialogResult.OK)
             {
-                // Limpiamos las cajas de texto de selección del menú lateral por seguridad
                 idEspacioSeleccionado = "";
                 lblSeleccionado.Text = "Ningún espacio seleccionado";
 
-                // Volvemos a generar el mapa en tiempo real leyendo la base de datos limpia
                 CargarMapaParqueo();
             }
         }
 
-        // Diseñado por Evanelyh: Dibuja la calle divisoria entre carros y motos
         private void panelCalle_Paint(object sender, PaintEventArgs e)
         {
             using (Pen pen = new Pen(Color.Yellow, 3))
